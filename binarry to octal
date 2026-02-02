@@ -1,0 +1,31 @@
+#include<stdio.h>
+int btd(int binum){
+    int dec=0,base=1;
+    while(binum!=0){
+        int rem = binum%10;
+        dec=dec+rem *base;
+        base= base*2;
+        binum=binum/10;
+    }
+    return dec;
+}
+
+ int dto(int decnum){
+    int place =1, octal=0;
+    while(decnum!=0){
+        int rem=decnum%8;
+        octal = octal +rem * place ;
+        decnum = decnum/8;
+        place = place * 10;
+    }
+    return octal;
+ }
+   int main(){
+    int num;
+    printf("Enter binary number: ");
+    scanf("%d",&num);
+    int dec=btd(num);
+    int octal=dto(dec);
+    printf("octal of %d is %d",num,octal);
+    return 0;
+   }
