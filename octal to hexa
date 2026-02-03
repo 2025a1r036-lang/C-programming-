@@ -1,0 +1,48 @@
+#include<stdio.h>
+#include<string.h>
+int convertoctaltodecimal(int octalnum){
+       int decnum = 0, base = 1; 
+        while(octalnum != 0){
+        int rem = octalnum%10;
+        decnum = decnum + rem*base;
+        base = base*8;
+        octalnum = octalnum/10;
+    }
+    return decnum;
+}
+    char* convertDecimalToHexaDeciaml(int dec){
+static char hexa[1001]="";
+while (dec != 0){
+int rem = dec%16;
+char str[2];
+if(rem>=0 && rem<=9)
+sprintf(str, "%d", rem);
+else if(rem == 10)
+str[0] ='A';
+else if(rem == 11)
+str[0] ='B';
+else if(rem == 12)
+str[0] = 'C';
+else if(rem == 13)
+str[0] = 'D';
+else if(rem == 14)
+str[0] = 'E';
+else if(rem == 15)
+str[0] = 'F';
+else
+str[0] = 'A';
+str[1] = '\0';
+strcat(hexa, str);
+dec = dec/16;
+}
+strrev(hexa);
+return hexa;
+}
+int main(){
+    int num; 
+    printf("Enter The Value: ");
+    scanf("%d", &num);
+    char *hexadec = convertDecimalToHexaDeciaml(convertoctaltodecimal(num));
+    printf("%s ", hexadec);
+    return 0;
+}
